@@ -26,42 +26,33 @@
     <main class="container-fluid my-3">
       <header class="jumbotron">
         <h1 class="display-3">Work Day Scheduler</h1>
-        <p class="lead">A simple calendar app for scheduling your work day</p>
+        <p class="lead description">
+          A simple calendar app for scheduling your work day
+        </p>
         <p id="currentDay" class="lead"></p>
       </header>
 
-      <div class="input-group mb-3 column d-flex justify-content-center">
-        <span class="input-group-text time-block col-1">10am</span>
-        <input
-          type="text"
-          class="form-control row col-8"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-        />
-        <button
-          class="btn btn-outline-secondary saveBtn col-1"
-          type="button"
-          id="button-addon2"
-        >
-          Button
-        </button>
-        <div class="w-100"></div>
-        <span class="input-group-text time-block col-1">10am</span>
-        <input
-          type="text"
-          class="form-control row col-8"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-        />
-        <button
-          class="btn btn-outline-secondary saveBtn col-1"
-          type="button"
-          id="button-addon2"
-        >
-          Button
-        </button>
+      <div id="hour-list" class="time-block">
+        <div id="time" class="row d-flex justify-content-center">
+          <div class="col-1 hour text-right">9am</div>
+          <textarea
+            class="toDo col-8 form-control"
+            aria-label="With textarea"
+          ></textarea>
+          <button
+            class="
+              col-1
+              btn
+              saveBtn
+              d-flex
+              justify-content-center
+              align-items-center
+            "
+            type="button"
+          >
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </main>
 
