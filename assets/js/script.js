@@ -1,7 +1,7 @@
 var today = moment();
 $( "#currentDay" ).text(today.format( "[Today is] dddd, MMMM Do" ));
 
-// breaks down hour-list object inot array of time/todo/savebutton div rows
+// breaks down hour-list object into array of time/todo/save button div rows
 var hourList = $( "#hour-list > div" );
 var workHours = 8;
 
@@ -58,15 +58,35 @@ for (let i = 0; i < ($( ".time-block > div" ).length); i++){
     }
 }
 
+// holds local storage key value >> pares with value stored in loVal 
+var loKey;
+
+// holds stringified item from memory
+var deathDance;
+
+// loops through the rows that are children of the time block div as many times as there are rows
+for  (let i = 0; i< ($( ".time-block > div" ).length); i++){
+    // grabs the row the loop is on
+    var compRow = $( ".row" )[i];
+    // grabs the textarea element of row loop is on
+    var textRow = $( ".row > .toDo" )[i];
+    // grabs the id of the id of the row the loop is on and sets it as the key name of row's item to be remembered
+    loKey = $(compRow).attr( "id" );
+    // gets the stringified version of the value stored in memory for the row from memory
+    deathDance = localStorage.getItem(JSON.stringify(loKey))
+
+    // parses the string version of row's memory value and displays in the row's textarea
+    textRow.innerText = JSON.parse(deathDance);
+}
+
 // click function listens for any button being clicked
 $( "button" ).click(function(){
     // gets the id of the parent element of the button that is clicked
-        var loKey = $(this).parent().attr("id");
+        loKey = $(this).parent().attr("id");
         console.log(loKey);
-        // gets the text that is entered in the text aerea that is a sibling to the button that is clicked
+        // gets the text that is entered in the text area that is a sibling to the button that is clicked
         var loVal = $(this).siblings("textarea").val();
 
         // stores the key = id of div that is the parent of the button clicked and value that is the text entered into the textarea sibling of the button clicked
         localStorage.setItem(JSON.stringify(loKey), JSON.stringify(loVal));
-        console.log(localStorage.getItem(JSON.stringify(loKey)))
     });
