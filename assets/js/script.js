@@ -58,3 +58,15 @@ for (let i = 0; i < ($( ".time-block > div" ).length); i++){
     }
 }
 
+// click function listens for any button being clicked
+$( "button" ).click(function(){
+    // gets the id of the parent element of the button that is clicked
+        var loKey = $(this).parent().attr("id");
+        console.log(loKey);
+        // gets the text that is entered in the text aerea that is a sibling to the button that is clicked
+        var loVal = $(this).siblings("textarea").val();
+
+        // stores the key = id of div that is the parent of the button clicked and value that is the text entered into the textarea sibling of the button clicked
+        localStorage.setItem(JSON.stringify(loKey), JSON.stringify(loVal));
+        console.log(localStorage.getItem(JSON.stringify(loKey)))
+    });
